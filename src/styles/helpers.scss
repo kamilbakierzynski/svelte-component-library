@@ -1,0 +1,17 @@
+@mixin box-shadow($attr) {
+  -webkit-box-shadow: $attr;
+  -moz-box-shadow: $attr;
+  box-shadow: $attr;
+}
+
+@mixin placeholder($color) {
+  &::placeholder {
+    color: $color;
+  }
+  &::-ms-input-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}
