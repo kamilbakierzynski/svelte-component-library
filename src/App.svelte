@@ -3,6 +3,7 @@
   import Checkbox from "./components/Checkbox.svelte";
   import Input from "./components/Input.svelte";
   import Row from "./components/Row.svelte";
+import Textarea from "./components/Textarea.svelte";
 </script>
 
 <main>
@@ -26,5 +27,10 @@
   <Row justifyContent="space-around">
     <Checkbox name="Checkbox" />
     <Checkbox name="Disabled" disabled />
+  </Row>
+  <Row>
+    <Textarea rows={5}/>
+    <Textarea placeholder="Textarea"/>
+    <Textarea disabled/>
   </Row>
 </main>
