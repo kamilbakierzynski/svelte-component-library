@@ -5,35 +5,62 @@
 <script lang="ts">
   export let type: ButtonType = "primary";
   export let disabled = false;
+
+  let isHoveringOverIcon = false;
+  const setIsHoveringOverIcon = (val: boolean) => (isHoveringOverIcon = val);
+  const entersIcon = () => setIsHoveringOverIcon(true);
+  const leavesIcon = () => setIsHoveringOverIcon(false);
 </script>
 
-<button
-  on:click
-  class:primary={type === "primary"}
-  class:secondary={type === "secondary"}
-  class:danger={type === "danger"}
-  class:text={type === "text"}
-  {disabled}
->
-  <slot>Button</slot>
-</button>
+<div class="wrapper" on:click tabindex="0">
+  <span class="icon" on:pointerenter={entersIcon} on:pointerleave={leavesIcon}>
+    <slot>Button</slot>
+  </span>
+  <button
+    tabindex="0"
+    class:primary={type === "primary"}
+    class:secondary={type === "secondary"}
+    class:danger={type === "danger"}
+    class:text={type === "text"}
+    class:hover={isHoveringOverIcon}
+    {disabled}
+  />
+</div>
 
 <style lang="scss">
   @import "../styles/styles.scss";
   @import "../styles/helpers.scss";
+
+  .wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    color: black;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%) translateX(50%);
+    cursor: pointer;
+  }
 
   button {
     background-color: $primary-color;
     color: $button-text-color;
     border: none;
     border-radius: $border-radius;
-    padding-left: 1.2em;
-    padding-right: 1.2em;
-    padding-top: 0.7em;
-    padding-bottom: 0.7em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     cursor: pointer;
     transition: box-shadow 200ms, background-color 150ms;
     margin: 0.2em;
+    height: 20px;
+    width: 20px;
 
     &:disabled {
       cursor: not-allowed;
@@ -43,6 +70,9 @@
     @mixin actions($color, $hover_val: 10%, $active_val: 5%) {
       &:not([disabled]) {
         &:hover {
+          background-color: lighten($color, $hover_val);
+        }
+        &.hover {
           background-color: lighten($color, $hover_val);
         }
         &:active {

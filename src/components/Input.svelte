@@ -25,6 +25,7 @@
     flex-direction: row;
     align-items: stretch;
     justify-content: start;
+    position: relative;
 
     &.disabled {
       filter: opacity($disabled-opacity);
@@ -39,9 +40,9 @@
     padding-right: 0.6em;
     padding-top: 0.4em;
     padding-bottom: 0.4em;
-    z-index: 2;
     font-size: 1.1em;
     border: 1px solid $secondary-color;
+    z-index: 1;
     @include placeholder($secondary-color);
 
     &:disabled {

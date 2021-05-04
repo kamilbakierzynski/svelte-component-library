@@ -2,8 +2,9 @@
   import Button from "./components/Button.svelte";
   import Checkbox from "./components/Checkbox.svelte";
   import Input from "./components/Input.svelte";
+  import Modal from "./components/Modal.svelte";
   import Row from "./components/Row.svelte";
-import Textarea from "./components/Textarea.svelte";
+  import Textarea from "./components/Textarea.svelte";
 </script>
 
 <main>
@@ -29,8 +30,9 @@ import Textarea from "./components/Textarea.svelte";
     <Checkbox name="Disabled" disabled />
   </Row>
   <Row>
-    <Textarea rows={5}/>
-    <Textarea placeholder="Textarea"/>
-    <Textarea disabled/>
+    <Textarea rows={5} />
+    <Textarea placeholder="Textarea" />
+    <Textarea disabled />
   </Row>
+  <Modal />
 </main>
